@@ -34,7 +34,7 @@ export default function CreatePage() {
 
   const mutation = useMutation({
     mutationFn: async (data: FormData) => {
-      const res = await fetch('/winetasting/api/tasting', {
+      const res = await fetch('/api/tasting', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

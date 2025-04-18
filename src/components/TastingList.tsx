@@ -58,7 +58,7 @@ export function TastingList({ initialRecords }: Props) {
   const { data = convertData } = useQuery<FormData[], Error>({
     queryKey: ['tastingRecords'],
     queryFn: () =>
-      fetch('/winetasting/api/tasting').then(async (res) => {
+      fetch('/api/tasting').then(async (res) => {
         if (!res.ok) throw new Error('一覧取得に失敗しました');
         const data = await res.json();
         return data.map((d: any) => ({
@@ -77,7 +77,7 @@ export function TastingList({ initialRecords }: Props) {
 
   const deleteMutation = useMutation<void, Error, string>({
     mutationFn: (id) =>
-      fetch(`/winetasting/api/tasting/${id}`, { method: 'DELETE' }).then((res) => {
+      fetch(`/api/tasting/${id}`, { method: 'DELETE' }).then((res) => {
         if (!res.ok) throw new Error('削除に失敗しました');
       }),
     onSuccess: () => {

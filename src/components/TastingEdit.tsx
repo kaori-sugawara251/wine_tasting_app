@@ -53,7 +53,7 @@ export function TastingEdit({ initialRecord }: Props) {
   const { data: record = convertData } = useQuery<FormData, Error>({
     queryKey: ['tastingRecord', id],
     queryFn: async () => {
-      const res = await fetch(`/winetasting/api/tasting/${id}`);
+      const res = await fetch(`/api/tasting/${id}`);
       if (!res.ok) throw new Error('取得失敗');
       const d = await res.json();
       return {
@@ -80,7 +80,7 @@ export function TastingEdit({ initialRecord }: Props) {
 
   const mutation = useMutation({
     mutationFn: async (data: FormData) => {
-      const res = await fetch(`/winetasting/api/tasting/${id}`, {
+      const res = await fetch(`/api/tasting/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
